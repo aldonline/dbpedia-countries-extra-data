@@ -1,6 +1,6 @@
 get_flag = (thumb_url) ->
-  t = thumb_url
-  t.substring t.indexOf('px-') + 3, t.length - 4
+  t = thumb_url.split('/thumb/').join('/')
+  t.substring 0, t.indexOf('.svg/') + 4
 
 process_row = (tr) ->
   row = {}
@@ -8,13 +8,14 @@ process_row = (tr) ->
   nametd = $ tds[1]
   is_country = is_bold = nametd.find('b').length > 0
   span = if is_bold then nametd.find('b') else nametd.find('i')
-  flag = get_flag span.find('img').attr 'src'
+  thumb = span.find('img').attr 'src'
+  flag = get_flag thumb
   a = span.find('a')
   wikipage_url = a.attr('href')
   wikipedia_id = wikipage_url.split('/')[2]
   label = a.text()
   population = Number $(tds[2]).text().split(',').join('')
-  [wikipedia_id, label, is_country, population, flag]
+  [wikipedia_id, label, is_country, population, thumb, flag]
 
 trs = $ '#sortable_table_id_0 tr'
 countries = []
@@ -25,9 +26,30 @@ for i in [2 ... trs.length]
 ## we print it out as JSON
 console.log JSON.stringify(countries).replace(/\]/g,"]\n")
 
+# now we compose the TTL output
+ttl = '@prefix v: <http://github.com/aldonline/dbpedia-countries-extra-data/raw/master/vocab.ttl#> . \n'
+for c in countries
+  ttl += " <http://dbpedia.org/resource/#{c[0]}> "
+  ttl += " v:id \"#{c[0]}\" ; "
+  ttl += " v:label \"#{c[1]}\" ; "
+  ttl += " v:is_country " + (if c[2] then 1 else 0) + ' ; '
+  ttl += " v:population #{c[3]} ; "
+  ttl += " v:thumb <#{c[4]}> ; "
+  ttl += " v:flag <#{c[5]}> . "
+  ttl += '\n'
 
+# and print it out
+console.log ttl
 
 ###
+
+http://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/22px-Flag_of_the_United_States.svg.png
+http://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg
+
+http://upload.wikimedia.org/wikipedia/commons/d/dc/Flag_of_Saudi_Arabia.svg
+
+
+
 
 <!-- bold with supertext -->
 

@@ -1,0 +1,7 @@
+define input:same-as "yes"
+prefix g: <http://www.geonames.org/ontology#>
+prefix dbp: <http://dbpedia.org/property/>
+select ?countryCode
+where { <http://dbpedia.org/resource/Saudi_Arabia> g:countryCode ?countryCode }
+
+select * from <http://github.com/aldonline/dbpedia-countries-extra-data/raw/master/test.ttl> where { ?s ?p ?o }

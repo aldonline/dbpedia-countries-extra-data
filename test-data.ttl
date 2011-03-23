@@ -1,3 +1,0 @@
-@prefix v: <http://github.com/aldonline/dbpedia-countries-extra-data/raw/master/vocab.ttl#> .
-@prefix t: <http://github.com/aldonline/dbpedia-countries-extra-data/raw/master/test.ttl#> .
-t:a t:b t:c .
