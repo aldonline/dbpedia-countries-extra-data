@@ -1,0 +1,11 @@
+# completed by hand by looking at:
+# http://www.geonames.org/countries/
+# and inspecting the URIs
+
+@prefix g: <http://www.geonames.org/ontology#> .
+
+<http://dbpedia.org/resource/South_Korea> g:countryCode "KR" .
+<http://dbpedia.org/resource/Republic_of_China> g:countryCode "TW" .
+<http://dbpedia.org/resource/Costa_Rica> g:countryCode "CR" .
+<http://dbpedia.org/resource/Georgia_(country)> g:countryCode "GE" .
+<http://dbpedia.org/resource/Palestinian_territories> g:countryCode "PS" .
