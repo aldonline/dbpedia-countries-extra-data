@@ -9,3 +9,8 @@
 <http://dbpedia.org/resource/Costa_Rica> g:countryCode "CR" .
 <http://dbpedia.org/resource/Georgia_(country)> g:countryCode "GE" .
 <http://dbpedia.org/resource/Palestinian_territories> g:countryCode "PS" .
+
+<http://dbpedia.org/resource/Faroe_Islands> g:countryCode "FO" .
+<http://dbpedia.org/resource/Cura%C3%A7ao> g:countryCode "CW" .
+<http://dbpedia.org/resource/Sint_Maarten> g:countryCode "SX" .
+<http://dbpedia.org/resource/Saint_Helena,_Ascension_and_Tristan_da_Cunha> g:countryCode "SH" .

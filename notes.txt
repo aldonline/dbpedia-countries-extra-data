@@ -50,3 +50,10 @@ select * where {
 } order by ?code
 
 
+# which territories don't have a code?
+prefix v: <http://github.com/aldonline/dbpedia-countries-extra-data/raw/master/vocab.ttl#>
+prefix g: <http://www.geonames.org/ontology#>
+select * where { 
+    ?s v:id ?id .
+    optional{ ?s g:countryCode ?code }
+} order by ?code
